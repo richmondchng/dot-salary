@@ -119,7 +119,7 @@ class UsersControllerTest {
                 .andExpect(jsonPath("$.results[1].salary", is(3500))) ;
 
         verify(userService, times(1)).getUsers(eq(BigDecimal.valueOf(100)),
-                eq(BigDecimal.valueOf(5000)), eq(10), eq(99), eq("NAME"));
+                eq(BigDecimal.valueOf(5000)), eq(10), eq(99), eq("name"));
     }
 
     /**
@@ -137,6 +137,6 @@ class UsersControllerTest {
                 .andExpect(jsonPath("$.error", is("Invalid parameter")));
 
         verify(userService, times(1)).getUsers(eq(BigDecimal.ZERO), eq(BigDecimal.valueOf(4000)),
-                eq(0), isNull(), eq("GENDER"));
+                eq(0), isNull(), eq("gender"));
     }
 }

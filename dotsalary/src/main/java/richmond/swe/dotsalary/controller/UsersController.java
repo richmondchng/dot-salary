@@ -1,7 +1,6 @@
 package richmond.swe.dotsalary.controller;
 
 import lombok.AllArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,8 +41,7 @@ public class UsersController {
                                              @RequestParam(name = "offset", required = false, defaultValue = "0") final Integer offset,
                                              @RequestParam(name = "limit", required = false) final Integer limit,
                                              @RequestParam(name = "sort", required = false) final String sort) {
-        final Collection<UserBean> results = userService.getUsers(min, max, offset, limit,
-                StringUtils.isEmpty(sort) ? null : sort.toUpperCase());
+        final Collection<UserBean> results = userService.getUsers(min, max, offset, limit, sort);
         return ResponseEntity.ok(mapToBeans(results));
     }
 
