@@ -1,18 +1,29 @@
 package richmond.swe.dotsalary.service;
 
+import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import richmond.swe.dotsalary.data.SortField;
+import richmond.swe.dotsalary.data.entity.UserEntity;
+import richmond.swe.dotsalary.data.repository.OffsetPageRequest;
+import richmond.swe.dotsalary.data.repository.UserRepository;
 import richmond.swe.dotsalary.service.bean.UserBean;
 
 import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Service to manage users.
  * @author richmondchng
  */
 @Service
+@AllArgsConstructor
 public class UserService {
+
+    private final UserRepository userRepository;
 
     /**
      * Get users.
@@ -36,9 +47,36 @@ public class UserService {
             throw new IllegalArgumentException("Missing mandatory parameter offset");
         }
         final SortField sortField = getSortField(sort);
-        return null;
+
+        // build pagination
+        final Pageable pageable = OffsetPageRequest.builder()
+                .offset(offset)
+                .limit(limit)
+                .sort(sortField)
+                .build();
+
+        final List<UserEntity> results = userRepository.findBySalary(min, max, pageable);
+        return results.stream().map(this::mapToBean).collect(Collectors.toList());
     }
 
+    /**
+     * Map to service bean.
+     * @param bean entity bean
+     * @return service bean
+     */
+    private UserBean mapToBean(final UserEntity bean) {
+        return UserBean.builder()
+                .id(bean.getId())
+                .name(bean.getName())
+                .salary(bean.getSalary())
+                .build();
+    }
+
+    /**
+     * Get sort field enum value.
+     * @param sort sort field name
+     * @return SortField
+     */
     private SortField getSortField(final String sort) {
         SortField sortField = SortField.NONE;
         if(StringUtils.isNotEmpty((sort))) {
@@ -49,9 +87,5 @@ public class UserService {
             }
         }
         return sortField;
-    }
-
-    private enum SortField {
-        NAME, SALARY, NONE;
     }
 }

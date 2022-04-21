@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 @Getter
 @Builder
 public class UserBean {
+    private long id;
     private String name;
     private BigDecimal salary;
 }

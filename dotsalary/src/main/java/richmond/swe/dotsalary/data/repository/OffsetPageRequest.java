@@ -33,20 +33,19 @@ public class OffsetPageRequest extends PageRequest {
      * Builder class.
      */
     public static class OffsetPageRequestBuilder {
-        private int page = 0;
         private int offset = 0;
         private int limit = Integer.MAX_VALUE;
         private Sort sort = Sort.unsorted();
 
         private OffsetPageRequestBuilder() {}
 
-        public OffsetPageRequestBuilder offset(final int offset) {
-            this.offset = offset;
+        public OffsetPageRequestBuilder offset(final Integer offset) {
+            this.offset = offset == null ? 0 : offset;
             return this;
         }
 
-        public OffsetPageRequestBuilder limit(final int limit) {
-            this.limit = limit;
+        public OffsetPageRequestBuilder limit(final Integer limit) {
+            this.limit = limit == null ? Integer.MAX_VALUE : limit;
             return this;
         }
 
@@ -56,7 +55,8 @@ public class OffsetPageRequest extends PageRequest {
         }
 
         public OffsetPageRequest build() {
-            return new OffsetPageRequest(page, offset, limit, sort);
+            // default to page 0
+            return new OffsetPageRequest(0, offset, limit, sort);
         }
     }
 }
