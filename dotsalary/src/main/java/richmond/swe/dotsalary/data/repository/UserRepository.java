@@ -26,6 +26,6 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
     @Query(value = "from UserEntity t where salary BETWEEN :min AND :max")
     List<UserEntity> findBySalary(@Param("min") final BigDecimal min, @Param("max") final BigDecimal max, final Pageable pageable);
 
-    @Query(value = "from UserEntity t where name IN :names")
+    @Query(value = "from UserEntity t where upper(t.name) IN :names")
     List<UserEntity> findAllByNames(@Param("names") final Set<String> names);
 }

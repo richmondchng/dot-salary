@@ -328,7 +328,7 @@ class UserRepositoryTest {
      */
     @Test
     void givenListOfNames_whenFindAllByName_returnRecords() {
-        final Set<String> names = Set.of("Betty", "Kitty", "Donna", "Bart", "Homer");
+        final Set<String> names = Set.of("BETTY", "KITTY", "DONNA", "BART", "HOMER");
 
         final List<UserEntity> results = userRepository.findAllByNames(names);
         assertEquals(3, results.size());
@@ -359,7 +359,7 @@ class UserRepositoryTest {
      */
     @Test
     void givenListOfNamesNotInData_whenFindAllByName_returnEmptyList() {
-        final Set<String> names = Set.of("Bart", "Homer");
+        final Set<String> names = Set.of("BART", "HOMER");
 
         final List<UserEntity> results = userRepository.findAllByNames(names);
         assertEquals(0, results.size());
