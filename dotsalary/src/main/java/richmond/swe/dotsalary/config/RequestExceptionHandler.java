@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import richmond.swe.dotsalary.controller.dto.UploadDTO;
+import richmond.swe.dotsalary.exception.BulkRecordProcessException;
 import richmond.swe.dotsalary.exception.FileProcessException;
 
 /**
@@ -42,6 +43,21 @@ public class RequestExceptionHandler {
     @ExceptionHandler(value = {FileProcessException.class})
     public ResponseEntity<UploadDTO> handleFileUploadException(final FileProcessException ex) {
         log.error("FileUploadException when processing request {}", ex.getMessage(), ex);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(UploadDTO.builder()
+                        .success(0)
+                        .build());
+    }
+
+    /**
+     * Error handling for BulkRecordProcessException.
+     *
+     * @param ex FileUploadException
+     * @return ResponseEntity
+     */
+    @ExceptionHandler(value = {BulkRecordProcessException.class})
+    public ResponseEntity<UploadDTO> handleBulkRecordProcessException(final BulkRecordProcessException ex) {
+        log.error("BulkRecordProcessException when processing request {}", ex.getMessage(), ex);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(UploadDTO.builder()
                         .success(0)

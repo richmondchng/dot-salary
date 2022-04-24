@@ -60,6 +60,15 @@ public class UserService {
     }
 
     /**
+     * Bulk persist records.
+     * @param records collection of UserBeans
+     * @return 1 if successful, 0 if failure
+     */
+    public int bulkPersistRecords(final Collection<UserBean> records) {
+        return 1;
+    }
+
+    /**
      * Map to service bean.
      * @param bean entity bean
      * @return service bean
