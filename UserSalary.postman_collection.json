@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "9d05c70d-a823-4343-b823-03951901e1cc",
+		"_postman_id": "7a7122ea-2465-4553-878e-48c0e5574bcc",
 		"name": "UserSalary",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -46,6 +46,35 @@
 							"value": "name",
 							"disabled": true
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload File",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"upload"
 					]
 				}
 			},
