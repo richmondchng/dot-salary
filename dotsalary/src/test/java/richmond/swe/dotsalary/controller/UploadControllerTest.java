@@ -19,7 +19,6 @@ import java.util.Collections;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -51,7 +50,6 @@ class UploadControllerTest {
      *
      * File uploaded and processed without error.
      *
-     * @throws Exception
      */
     @Test
     void givenFile_whenUploadFile_returnSuccess() throws Exception {
@@ -79,7 +77,7 @@ class UploadControllerTest {
         assertEquals(1, captured.size());
         final UserBean userBean = captured.iterator().next();
         assertEquals("JOHN", userBean.getName());
-        assertTrue(BigDecimal.valueOf(1000).compareTo(userBean.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(1000).compareTo(userBean.getSalary()));
     }
 
     /**
@@ -87,7 +85,6 @@ class UploadControllerTest {
      *
      * File uploaded but failed processing.
      *
-     * @throws Exception
      */
     @Test
     void givenFileFailed_whenUploadFile_returnFailed() throws Exception {
@@ -115,7 +112,6 @@ class UploadControllerTest {
      *
      * File uploaded but failed processing beans.
      *
-     * @throws Exception
      */
     @Test
     void giveProcessingFailed_whenUploadFile_returnFailed() throws Exception {

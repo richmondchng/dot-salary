@@ -1,5 +1,9 @@
 package richmond.swe.dotsalary.data;
 
+/**
+ * Enum for field.
+ * @author richmondchng
+ */
 public enum SortField {
     NAME("name"),
     SALARY("salary"),

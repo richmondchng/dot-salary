@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Test UserRepository.
@@ -47,17 +46,17 @@ class UserRepositoryTest {
         final UserEntity result1 = iterator.next();
         assertEquals(8, result1.getId());
         assertEquals("Donna", result1.getName());
-        assertTrue(BigDecimal.valueOf(3075).compareTo(result1.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3075).compareTo(result1.getSalary()));
 
         final UserEntity result2 = iterator.next();
         assertEquals(9, result2.getId());
         assertEquals("Kitty", result2.getName());
-        assertTrue(BigDecimal.valueOf(3072).compareTo(result2.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3072).compareTo(result2.getSalary()));
 
         final UserEntity result3 = iterator.next();
         assertEquals(6, result3.getId());
         assertEquals("Michael", result3.getName());
-        assertTrue(BigDecimal.valueOf(3070).compareTo(result3.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3070).compareTo(result3.getSalary()));
     }
 
     /**
@@ -80,17 +79,17 @@ class UserRepositoryTest {
         final UserEntity result1 = iterator.next();
         assertEquals(8, result1.getId());
         assertEquals("Donna", result1.getName());
-        assertTrue(BigDecimal.valueOf(3075).compareTo(result1.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3075).compareTo(result1.getSalary()));
 
         final UserEntity result2 = iterator.next();
         assertEquals(9, result2.getId());
         assertEquals("Kitty", result2.getName());
-        assertTrue(BigDecimal.valueOf(3072).compareTo(result2.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3072).compareTo(result2.getSalary()));
 
         final UserEntity result3 = iterator.next();
         assertEquals(6, result3.getId());
         assertEquals("Michael", result3.getName());
-        assertTrue(BigDecimal.valueOf(3070).compareTo(result3.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3070).compareTo(result3.getSalary()));
     }
 
     /**
@@ -113,17 +112,17 @@ class UserRepositoryTest {
         final UserEntity result1 = iterator.next();
         assertEquals(6, result1.getId());
         assertEquals("Michael", result1.getName());
-        assertTrue(BigDecimal.valueOf(3070).compareTo(result1.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3070).compareTo(result1.getSalary()));
 
         final UserEntity result2 = iterator.next();
         assertEquals(9, result2.getId());
         assertEquals("Kitty", result2.getName());
-        assertTrue(BigDecimal.valueOf(3072).compareTo(result2.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3072).compareTo(result2.getSalary()));
 
         final UserEntity result3 = iterator.next();
         assertEquals(8, result3.getId());
         assertEquals("Donna", result3.getName());
-        assertTrue(BigDecimal.valueOf(3075).compareTo(result3.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3075).compareTo(result3.getSalary()));
     }
 
     /**
@@ -159,52 +158,52 @@ class UserRepositoryTest {
         final UserEntity result1 = iterator.next();
         assertEquals(1, result1.getId());
         assertEquals("John", result1.getName());
-        assertTrue(BigDecimal.valueOf(3010).compareTo(result1.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3010).compareTo(result1.getSalary()));
 
         final UserEntity result2 = iterator.next();
         assertEquals(2, result2.getId());
         assertEquals("Ryan", result2.getName());
-        assertTrue(BigDecimal.valueOf(3020).compareTo(result2.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3020).compareTo(result2.getSalary()));
 
         final UserEntity result3 = iterator.next();
         assertEquals(3, result3.getId());
         assertEquals("Betty", result3.getName());
-        assertTrue(BigDecimal.valueOf(3050).compareTo(result3.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3050).compareTo(result3.getSalary()));
 
         final UserEntity result4 = iterator.next();
         assertEquals(4, result4.getId());
         assertEquals("Eric", result4.getName());
-        assertTrue(BigDecimal.valueOf(3060).compareTo(result4.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3060).compareTo(result4.getSalary()));
 
         final UserEntity result5 = iterator.next();
         assertEquals(5, result5.getId());
         assertEquals("Steven", result5.getName());
-        assertTrue(BigDecimal.valueOf(3030).compareTo(result5.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3030).compareTo(result5.getSalary()));
 
         final UserEntity result6 = iterator.next();
         assertEquals(6, result6.getId());
         assertEquals("Michael", result6.getName());
-        assertTrue(BigDecimal.valueOf(3070).compareTo(result6.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3070).compareTo(result6.getSalary()));
 
         final UserEntity result7 = iterator.next();
         assertEquals(7, result7.getId());
         assertEquals("Jackie", result7.getName());
-        assertTrue(BigDecimal.valueOf(3025).compareTo(result7.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3025).compareTo(result7.getSalary()));
 
         final UserEntity result8 = iterator.next();
         assertEquals(8, result8.getId());
         assertEquals("Donna", result8.getName());
-        assertTrue(BigDecimal.valueOf(3075).compareTo(result8.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3075).compareTo(result8.getSalary()));
 
         final UserEntity result9 = iterator.next();
         assertEquals(9, result9.getId());
         assertEquals("Kitty", result9.getName());
-        assertTrue(BigDecimal.valueOf(3072).compareTo(result9.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3072).compareTo(result9.getSalary()));
 
         final UserEntity result10 = iterator.next();
         assertEquals(10, result10.getId());
         assertEquals("Luke", result10.getName());
-        assertTrue(BigDecimal.valueOf(3080).compareTo(result10.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3080).compareTo(result10.getSalary()));
     }
 
     /**
@@ -228,17 +227,17 @@ class UserRepositoryTest {
         final UserEntity result1 = iterator.next();
         assertEquals(1, result1.getId());
         assertEquals("John", result1.getName());
-        assertTrue(BigDecimal.valueOf(3010).compareTo(result1.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3010).compareTo(result1.getSalary()));
 
         final UserEntity result2 = iterator.next();
         assertEquals(2, result2.getId());
         assertEquals("Ryan", result2.getName());
-        assertTrue(BigDecimal.valueOf(3020).compareTo(result2.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3020).compareTo(result2.getSalary()));
 
         final UserEntity result3 = iterator.next();
         assertEquals(3, result3.getId());
         assertEquals("Betty", result3.getName());
-        assertTrue(BigDecimal.valueOf(3050).compareTo(result3.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3050).compareTo(result3.getSalary()));
     }
 
     /**
@@ -262,22 +261,22 @@ class UserRepositoryTest {
         final UserEntity result1 = iterator.next();
         assertEquals(7, result1.getId());
         assertEquals("Jackie", result1.getName());
-        assertTrue(BigDecimal.valueOf(3025).compareTo(result1.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3025).compareTo(result1.getSalary()));
 
         final UserEntity result2 = iterator.next();
         assertEquals(8, result2.getId());
         assertEquals("Donna", result2.getName());
-        assertTrue(BigDecimal.valueOf(3075).compareTo(result2.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3075).compareTo(result2.getSalary()));
 
         final UserEntity result3 = iterator.next();
         assertEquals(9, result3.getId());
         assertEquals("Kitty", result3.getName());
-        assertTrue(BigDecimal.valueOf(3072).compareTo(result3.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3072).compareTo(result3.getSalary()));
 
         final UserEntity result4 = iterator.next();
         assertEquals(10, result4.getId());
         assertEquals("Luke", result4.getName());
-        assertTrue(BigDecimal.valueOf(3080).compareTo(result4.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3080).compareTo(result4.getSalary()));
     }
 
     /**
@@ -303,22 +302,22 @@ class UserRepositoryTest {
         final UserEntity result1 = iterator.next();
         assertEquals(4, result1.getId());
         assertEquals("Eric", result1.getName());
-        assertTrue(BigDecimal.valueOf(3060).compareTo(result1.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3060).compareTo(result1.getSalary()));
 
         final UserEntity result2 = iterator.next();
         assertEquals(7, result2.getId());
         assertEquals("Jackie", result2.getName());
-        assertTrue(BigDecimal.valueOf(3025).compareTo(result2.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3025).compareTo(result2.getSalary()));
 
         final UserEntity result3 = iterator.next();
         assertEquals(1, result3.getId());
         assertEquals("John", result3.getName());
-        assertTrue(BigDecimal.valueOf(3010).compareTo(result3.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3010).compareTo(result3.getSalary()));
 
         final UserEntity result4 = iterator.next();
         assertEquals(9, result4.getId());
         assertEquals("Kitty", result4.getName());
-        assertTrue(BigDecimal.valueOf(3072).compareTo(result4.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3072).compareTo(result4.getSalary()));
     }
 
     /**
@@ -339,17 +338,17 @@ class UserRepositoryTest {
         final UserEntity result1 = iterator.next();
         assertEquals(3, result1.getId());
         assertEquals("Betty", result1.getName());
-        assertTrue(BigDecimal.valueOf(3050).compareTo(result1.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3050).compareTo(result1.getSalary()));
 
         final UserEntity result2 = iterator.next();
         assertEquals(8, result2.getId());
         assertEquals("Donna", result2.getName());
-        assertTrue(BigDecimal.valueOf(3075).compareTo(result2.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3075).compareTo(result2.getSalary()));
 
         final UserEntity result3 = iterator.next();
         assertEquals(9, result3.getId());
         assertEquals("Kitty", result3.getName());
-        assertTrue(BigDecimal.valueOf(3072).compareTo(result3.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3072).compareTo(result3.getSalary()));
     }
 
     /**

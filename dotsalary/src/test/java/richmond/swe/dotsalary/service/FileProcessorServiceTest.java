@@ -19,7 +19,6 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 /**
@@ -44,12 +43,11 @@ class FileProcessorServiceTest {
 
     private MultipartFile toMultipartFile(final File file, final String contentType) throws IOException {
         final Path path = Path.of(file.toURI());
-        final MockMultipartFile mockedFile = new MockMultipartFile(
+        return new MockMultipartFile(
                 "file",
                 file.getName(),
                 contentType,
                 Files.readAllBytes(path));
-        return mockedFile;
     }
 
     /**
@@ -242,10 +240,10 @@ class FileProcessorServiceTest {
 
         final UserBean result1 = iterator.next();
         assertEquals("JOHN", result1.getName());
-        assertTrue(BigDecimal.valueOf(3000.80).compareTo(result1.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(3000.80).compareTo(result1.getSalary()));
 
         final UserBean result2 = iterator.next();
         assertEquals("BRUCE", result2.getName());
-        assertTrue(BigDecimal.valueOf(5000).compareTo(result2.getSalary()) == 0);
+        assertEquals(0, BigDecimal.valueOf(5000).compareTo(result2.getSalary()));
     }
 }
