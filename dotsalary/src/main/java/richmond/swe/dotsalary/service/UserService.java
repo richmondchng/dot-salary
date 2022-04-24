@@ -65,6 +65,11 @@ public class UserService {
      * @return 1 if successful, 0 if failure
      */
     public int bulkPersistRecords(final Collection<UserBean> records) {
+        final List<String> names = records.stream().map(b -> b.getName().toUpperCase()).collect(Collectors.toList());
+
+        for(UserBean record : records) {
+
+        }
         return 1;
     }
 

@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -318,5 +319,49 @@ class UserRepositoryTest {
         assertEquals(9, result4.getId());
         assertEquals("Kitty", result4.getName());
         assertTrue(BigDecimal.valueOf(3072).compareTo(result4.getSalary()) == 0);
+    }
+
+    /**
+     * Test findAllByNames.
+     *
+     * Supply set of names, returned matched records.
+     */
+    @Test
+    void givenListOfNames_whenFindAllByName_returnRecords() {
+        final Set<String> names = Set.of("Betty", "Kitty", "Donna", "Bart", "Homer");
+
+        final List<UserEntity> results = userRepository.findAllByNames(names);
+        assertEquals(3, results.size());
+
+        // sort by name
+        final Iterator<UserEntity> iterator = results.stream().sorted(Comparator.comparing(UserEntity::getName)).iterator();
+
+        final UserEntity result1 = iterator.next();
+        assertEquals(3, result1.getId());
+        assertEquals("Betty", result1.getName());
+        assertTrue(BigDecimal.valueOf(3050).compareTo(result1.getSalary()) == 0);
+
+        final UserEntity result2 = iterator.next();
+        assertEquals(8, result2.getId());
+        assertEquals("Donna", result2.getName());
+        assertTrue(BigDecimal.valueOf(3075).compareTo(result2.getSalary()) == 0);
+
+        final UserEntity result3 = iterator.next();
+        assertEquals(9, result3.getId());
+        assertEquals("Kitty", result3.getName());
+        assertTrue(BigDecimal.valueOf(3072).compareTo(result3.getSalary()) == 0);
+    }
+
+    /**
+     * Test findAllByNames.
+     *
+     * Supply set of names that are not in data, returned empty list.
+     */
+    @Test
+    void givenListOfNamesNotInData_whenFindAllByName_returnEmptyList() {
+        final Set<String> names = Set.of("Bart", "Homer");
+
+        final List<UserEntity> results = userRepository.findAllByNames(names);
+        assertEquals(0, results.size());
     }
 }
