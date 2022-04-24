@@ -13,6 +13,9 @@ import richmond.swe.dotsalary.service.bean.UserBean;
 import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -65,11 +68,34 @@ public class UserService {
      * @return 1 if successful, 0 if failure
      */
     public int bulkPersistRecords(final Collection<UserBean> records) {
-        final List<String> names = records.stream().map(b -> b.getName().toUpperCase()).collect(Collectors.toList());
+        // get all names
+        final Set<String> names = records.stream().map(b -> b.getName().toUpperCase()).collect(Collectors.toSet());
+        // find existing records, put into map where key = name
+        final Map<String, UserEntity> existingUserMap = userRepository.findAllByNames(names)
+                .stream().collect(Collectors.toMap(k -> k.getName().toUpperCase(), Function.identity()));
 
         for(UserBean record : records) {
+            if(BigDecimal.ZERO.compareTo(record.getSalary()) >= 0) {
+                // if less than or equal 0
+                continue;
+            }
 
+            final String key = record.getName().toUpperCase();
+            final UserEntity existingRecord = existingUserMap.get(key);
+            if(existingRecord == null) {
+                // new record
+                final UserEntity newRecord = new UserEntity();
+                newRecord.setName(record.getName());
+                newRecord.setSalary(record.getSalary());
+                // put back into map
+                existingUserMap.put(key, newRecord);
+                continue;
+            }
+            // update salary for existing record
+            existingRecord.setSalary(record.getSalary());
         }
+
+        userRepository.saveAllAndFlush(existingUserMap.values());
         return 1;
     }
 
