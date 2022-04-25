@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import richmond.swe.dotsalary.data.SortField;
 import richmond.swe.dotsalary.data.entity.UserEntity;
 import richmond.swe.dotsalary.data.repository.OffsetPageRequest;
@@ -67,6 +68,7 @@ public class UserService {
      * @param records collection of UserBeans
      * @return 1 if successful, 0 if failure
      */
+    @Transactional
     public int bulkPersistRecords(final Collection<UserBean> records) {
         // get all names
         final Set<String> names = records.stream().map(b -> b.getName().toUpperCase()).collect(Collectors.toSet());
